@@ -1,0 +1,25 @@
+# Project TODO
+
+- [x] Establish the CreateFlow AI app shell with logo, tagline, and responsive Create / Prompt Library / History navigation
+- [x] Build the Create page with six generator selectors: Email, Blog, Social Media, Product Description, Code, and Image
+- [x] Build dynamic generator forms with validation, disabled Generate states, spinners, and context-specific loading messages
+- [x] Implement secure server-side LLM generation for Email, Blog, Social Media, and Product Description
+- [x] Implement secure server-side LLM code generation with syntax-highlighted output and Copy Code
+- [x] Implement secure server-side image generation with display, download, regenerate, and practical LocalStorage persistence
+- [x] Implement result panel actions for copy, save, regenerate, clear, view, download, and delete as appropriate
+- [x] Add 20 curated Prompt Library cards with search, category filters, and Use Prompt navigation/prefill
+- [x] Add LocalStorage history capped at the latest 20 generations and newest-first rendering
+- [x] Add History view, copy/download, delete actions, empty state, and Start Creating CTA
+- [x] Add responsive styling for desktop, tablet, and mobile layouts
+- [x] Add unit tests for prompt construction, validation, LocalStorage limits, and core route behavior
+- [x] Run type checks, tests, and visual verification; fix any major issues
+- [x] Save a final checkpoint for handoff
+- [x] Add an explicit View action to the image result panel to match the required image workflow
+- [x] Add real syntax highlighting for generated code output in the result panel
+- [x] Add a Delete action for generated image results
+- [x] Add a View flow for saved text history entries
+- [x] Add unit tests for LocalStorage history limits and generate-route success/error behavior
+- [x] Add Delete to the generated image result panel and verify it clears the result
+- [x] Ensure the LocalStorage history test is discovered and executed by the test command
+- [x] Add sanitized failure-path coverage for the generation procedure
+- [x] Add mocked upstream-failure coverage asserting generation errors are sanitized
