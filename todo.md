@@ -29,3 +29,6 @@
 - [x] Use the supplied creativity image as the CreateFlow header logo treatment
 - [x] Upload and reference the logo asset through the project-managed asset URL
 - [x] Verify the image logo on desktop and mobile and save an updated checkpoint
+- [x] Create a complementary abstract CSS background treatment for the CreateFlow workspace
+- [x] Integrate the background with a readability-preserving overlay across the app shell
+- [x] Verify the background on desktop and mobile and save an updated checkpoint
