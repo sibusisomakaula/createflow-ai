@@ -32,3 +32,5 @@
 - [x] Create a complementary abstract CSS background treatment for the CreateFlow workspace
 - [x] Integrate the background with a readability-preserving overlay across the app shell
 - [x] Verify the background on desktop and mobile and save an updated checkpoint
+- [x] Add a GitHub-ready README covering CreateFlow AI features, setup, architecture, environment, scripts, and testing
+- [x] Validate README instructions against the current project and save an updated checkpoint
