@@ -26,3 +26,6 @@
 - [x] Refresh the shared visual theme using the supplied cyan, navy, lavender, pink, teal, and blue palette
 - [x] Rebalance page backgrounds, cards, accents, buttons, and generator states for a calm, readable experience
 - [x] Verify the palette refresh on desktop and mobile and save an updated checkpoint
+- [x] Use the supplied creativity image as the CreateFlow header logo treatment
+- [x] Upload and reference the logo asset through the project-managed asset URL
+- [x] Verify the image logo on desktop and mobile and save an updated checkpoint
