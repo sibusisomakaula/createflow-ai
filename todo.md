@@ -34,3 +34,11 @@
 - [x] Verify the background on desktop and mobile and save an updated checkpoint
 - [x] Add a GitHub-ready README covering CreateFlow AI features, setup, architecture, environment, scripts, and testing
 - [x] Validate README instructions against the current project and save an updated checkpoint
+- [x] Add Download PDF for generated text and code results
+- [x] Ensure Download Image is available for generated images in result and history views
+- [x] Add focused tests for download helper behavior and validate the updated UI
+- [x] Replace the fragile hand-built PDF serializer with a robust jsPDF export approach
+- [x] Add tests for PDF filename generation and image download success/fallback behavior
+- [x] Visually verify download controls in both Create and History views, including saved image modal
+- [x] Clarify the PDF export guarantee to match the embedded-font implementation
+- [x] Verify the saved image modal download action through the available browser preview flow
