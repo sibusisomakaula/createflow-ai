@@ -42,3 +42,4 @@
 - [x] Visually verify download controls in both Create and History views, including saved image modal
 - [x] Clarify the PDF export guarantee to match the embedded-font implementation
 - [x] Verify the saved image modal download action through the available browser preview flow
+- [x] Verify and checkpoint the Create page tagline update to “Creativity Made Easy”
