@@ -71,3 +71,7 @@
 - [x] Verify responsive Login rendering, tests, and checkpoint the update
 - [x] Verify the Login page on a mobile viewport and confirm the layout remains usable
 - [x] Save a new checkpoint after the Login page update is validated
+- [x] Add a dedicated Signup page and /signup route without restoring mandatory app gating
+- [x] Connect Signup to the secure account-creation portal and cross-link Login and Signup
+- [x] Verify responsive Signup rendering, tests, and checkpoint the update
+- [x] Save a new checkpoint capturing the verified Signup page and Login/Signup cross-links
