@@ -1,0 +1,12 @@
+import fs from "node:fs";
+const path = "client/src/pages/Home.tsx";
+let source = fs.readFileSync(path, "utf8");
+const oldRemove = `  const remove = async (id: string) => {\n    if (isAuthenticated) {\n      await deleteMutation.mutateAsync({ id: Number(id) });\n      setEntries(current => current.filter(item => item.id !== id));\n    } else {\n      const next = entries.filter(item => item.id !== id);\n      setEntries(next);\n      saveHistory(next);\n    }\n    setSelected(null);\n    toast.success("Deleted from history.");\n  };`;
+const newRemove = `  const remove = async (id: string) => {\n    try {\n      if (isAuthenticated) {\n        await deleteMutation.mutateAsync({ id: Number(id) });\n        setEntries(current => current.filter(item => item.id !== id));\n      } else {\n        const next = entries.filter(item => item.id !== id);\n        setEntries(next);\n        saveHistory(next);\n      }\n      setSelected(null);\n      toast.success("Deleted from history.");\n    } catch {\n      toast.error("We couldn't delete this private item. Please try again.");\n    }\n  };`;
+if (!source.includes(oldRemove)) throw new Error("remove block not found");
+source = source.replace(oldRemove, newRemove);
+const oldBranch = `</div> : entries.length === 0 ?`;
+const newBranch = `</div> : isAuthenticated && historyQuery.isError ? <div className="grid min-h-80 place-items-center rounded-3xl border border-dashed border-[#f1c4d0] bg-white p-10 text-center"><div><h2 className="font-bold text-[#174783]">Private history is temporarily unavailable.</h2><p className="mt-2 text-sm text-[#66849a]">Your account is still safe. Please refresh and try again.</p></div></div> : entries.length === 0 ?`;
+if (!source.includes(oldBranch)) throw new Error("history branch not found");
+source = source.replace(oldBranch, newBranch);
+fs.writeFileSync(path, source);

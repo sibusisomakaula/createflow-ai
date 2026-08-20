@@ -64,7 +64,7 @@ README.md             Project documentation
 
 Use Node.js 22 or a compatible current Node.js release and pnpm. The project template supplies the required application dependencies and development tooling.
 
-The generation procedures rely on server-side environment values supplied by the managed project runtime. In a local environment, configure the values required by the project template, including the built-in API URL and key, session values, and any OAuth values used by the scaffold. Do not commit `.env` files or provider credentials.
+The generation procedures rely on server-side environment values supplied by the managed project runtime. In a local environment, configure the values required by the project template, including the built-in API URL and key and session values. Do not commit `.env` files or provider credentials.
 
 Common managed environment variables include:
 
@@ -102,7 +102,7 @@ The development server runs the full application stack and exposes the Vite clie
 
 ## Testing
 
-The repository includes coverage for authentication logout behavior, structured prompt construction, required-field validation, sanitized upstream generation failures, and LocalStorage history limits.
+The repository includes coverage for authentication logout behavior, protected history behavior when a session is present, structured prompt construction, required-field validation, sanitized upstream generation failures, and LocalStorage history limits.
 
 Run the validation suite with:
 

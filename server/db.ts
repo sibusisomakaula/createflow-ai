@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { Generation, generations, InsertGeneration, InsertUser, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,24 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+export async function getGenerationsByUserId(userId: number): Promise<Generation[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(generations).where(eq(generations.userId, userId)).orderBy(desc(generations.createdAt)).limit(20);
+}
+
+export async function createGeneration(input: Omit<InsertGeneration, "id" | "createdAt">): Promise<Generation | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.insert(generations).values(input);
+  const insertedId = Number(result[0].insertId);
+  const rows = await db.select().from(generations).where(eq(generations.id, insertedId)).limit(1);
+  return rows[0];
+}
+
+export async function deleteGenerationByUserId(id: number, userId: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+  const result = await db.delete(generations).where(and(eq(generations.id, id), eq(generations.userId, userId)));
+  return Number(result[0].affectedRows) > 0;
+}

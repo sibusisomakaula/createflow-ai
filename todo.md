@@ -43,3 +43,26 @@
 - [x] Clarify the PDF export guarantee to match the embedded-font implementation
 - [x] Verify the saved image modal download action through the available browser preview flow
 - [x] Verify and checkpoint the Create page tagline update to “Creativity Made Easy”
+- [x] Add privacy-focused signup/login UI using the existing secure Manus OAuth flow
+- [x] Add user-scoped generation persistence with database ownership checks
+- [x] Synchronize authenticated History with private database records while preserving signed-out LocalStorage fallback
+- [x] Add sign-out/account state UI and privacy messaging
+- [x] Add schema migration, protected procedures, tests, and browser verification for account privacy
+- [x] Add explicit authenticated History load/save/delete error states
+- [x] Add successful private persistence and cross-user ownership tests
+- [x] Verify the signed-in private save and History flow in the browser
+- [x] Replace OAuth-first signup wording with custom email-and-password account creation
+- [x] Add securely hashed password storage and email uniqueness validation
+- [x] Add email-password signup, login, session validation, and logout procedures
+- [x] Gate CreateFlow routes until the user is authenticated
+- [x] Add auth form validation, password visibility, loading, and error states
+- [x] Add security-focused auth tests and update README authentication guidance
+- [x] Add a two-user ownership test proving one account cannot delete another account's generation
+- [x] Superseded authenticated signup, save, History, and sign-out browser flow after signup removal
+- [x] Remove the custom email-password signup/login gate from the app shell
+- [x] Restore direct access to Create, Prompt Library, and History routes
+- [x] Update README authentication guidance to match the direct-access experience
+- [x] Run tests and visual verification, then save the updated checkpoint
+- [x] Replace account-specific History copy with direct-access browser storage wording
+- [x] Replace remaining private/account History loading and error wording with browser-storage wording
+- [x] Re-run History visual verification after the copy cleanup

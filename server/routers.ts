@@ -3,8 +3,9 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { generateImage } from "./_core/imageGeneration";
 import { invokeLLM } from "./_core/llm";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router } from "./_core/trpc";
+import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { buildPrompt, getRequiredField } from "./promptTemplates";
+import { createGeneration, deleteGenerationByUserId, getGenerationsByUserId } from "./db";
 import { z } from "zod";
 
 const generatorTypes = ["email", "blog", "social", "product", "code", "image"] as const;
@@ -22,6 +23,19 @@ export const appRouter = router({
       ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
       return { success: true } as const;
     }),
+  }),
+  history: router({
+    list: protectedProcedure.query(({ ctx }) => getGenerationsByUserId(ctx.user.id)),
+    create: protectedProcedure.input(z.object({
+      type: z.enum(generatorTypes),
+      title: z.string().trim().min(1).max(255),
+      content: z.string().min(1).max(200000),
+    })).mutation(async ({ ctx, input }) => {
+      const generation = await createGeneration({ userId: ctx.user.id, type: input.type, title: input.title, content: input.content });
+      if (!generation) throw new Error("storage_unavailable");
+      return generation;
+    }),
+    delete: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => deleteGenerationByUserId(input.id, ctx.user.id)),
   }),
   generate: publicProcedure.input(inputSchema).mutation(async ({ input }) => {
     try {
