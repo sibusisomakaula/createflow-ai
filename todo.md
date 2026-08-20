@@ -66,3 +66,8 @@
 - [x] Replace account-specific History copy with direct-access browser storage wording
 - [x] Replace remaining private/account History loading and error wording with browser-storage wording
 - [x] Re-run History visual verification after the copy cleanup
+- [x] Add a dedicated Login page and route without restoring mandatory app gating
+- [x] Connect the Login action to the available authentication entrypoint
+- [x] Verify responsive Login rendering, tests, and checkpoint the update
+- [x] Verify the Login page on a mobile viewport and confirm the layout remains usable
+- [x] Save a new checkpoint after the Login page update is validated
