@@ -28,7 +28,7 @@ The interface uses a calm cyan workspace with deep navy actions, lavender active
 - Prompt prefill flow from the Prompt Library into the Create workspace.
 - LocalStorage history capped at the latest 20 saved generations and ordered newest-first.
 - Dashboard overview with creation counts, format coverage, quick actions, recent-work summaries, and empty states.
-- Login and Signup routes connected to the secure account portal without forcing authentication before app use.
+- Native email-and-password Login and Signup routes with secure sessions, password hashing, validation, and no mandatory authentication gate before app use.
 - Empty states and responsive navigation for desktop and mobile use.
 
 ## Technology
@@ -38,7 +38,7 @@ The interface uses a calm cyan workspace with deep navy actions, lavender active
 | Frontend | React 19, TypeScript, Vite, Tailwind CSS 4, Wouter, Lucide React |
 | Backend | Node.js, Express, tRPC 11 |
 | AI | Server-side Manus LLM and image-generation helpers |
-| Persistence | Browser LocalStorage for saved generations and image data where practical |
+| Persistence | Browser LocalStorage for signed-out saved generations, plus database-backed users and password sessions |
 | Validation | Vitest and TypeScript checking |
 | Deployment | Managed Manus WebDev hosting with project checkpoints |
 
@@ -105,7 +105,7 @@ The development server runs the full application stack and exposes the Vite clie
 
 ## Testing
 
-The repository includes coverage for authentication logout behavior, protected history behavior when a session is present, structured prompt construction, required-field validation, sanitized upstream generation failures, and LocalStorage history limits.
+The repository includes coverage for password hashing and verification, password policy and normalization, password-hash privacy in auth responses, authentication logout behavior, protected history behavior when a session is present, structured prompt construction, required-field validation, sanitized upstream generation failures, and LocalStorage history limits.
 
 Run the validation suite with:
 
@@ -115,7 +115,7 @@ pnpm test
 pnpm build
 ```
 
-The browser should also be used to verify the primary user flows: switching generator types, generating a result, copying or saving output, using a library prompt, reviewing history, and testing the responsive mobile navigation.
+The browser should also be used to verify the primary user flows: creating an account with an email and password, logging in and out, switching generator types, generating a result, copying or saving output, using a library prompt, reviewing history, and testing the responsive mobile navigation. Authentication remains optional for browsing and creating; signed-out users continue using browser storage.
 
 ## AI request architecture
 
@@ -125,7 +125,7 @@ This approach keeps provider credentials on the server and gives the frontend a 
 
 ## Data and privacy notes
 
-Saved history is stored in the current browser using LocalStorage. Clearing browser storage removes those saved items. The application should not be used to submit confidential, regulated, or personally sensitive information unless the deployment's privacy and retention requirements have been reviewed.
+Signed-out saved history is stored in the current browser using LocalStorage. Password accounts are stored in the project database, and passwords are stored only as one-way scrypt hashes; session cookies are HTTP-only. Clearing browser storage removes signed-out saved items. The application should not be used to submit confidential, regulated, or personally sensitive information unless the deployment's privacy and retention requirements have been reviewed.
 
 The repository does not seed or fabricate customer reviews, ratings, or testimonials. Prompt Library entries are curated product content, not user testimonials.
 

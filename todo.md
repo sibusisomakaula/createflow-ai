@@ -86,3 +86,13 @@
 - [x] Save a new checkpoint containing the Dashboard implementation
 - [x] Verify Create, Prompt Library, and History after adding Dashboard navigation on desktop and mobile
 - [x] Save a new checkpoint after the Dashboard, README, and navigation updates
+- [x] Add email-and-password account signup and login while preserving optional direct app access
+- [x] Add secure password hashing, validation, session handling, and account uniqueness checks
+- [x] Connect Login and Signup pages to password authentication with loading and error states
+- [x] Add password-auth security tests, update README guidance, and verify responsive flows
+- [x] Save a checkpoint containing the password-authentication update
+- [x] Replace remaining OAuth-based sign-in entrypoints with the native password /login flow
+- [x] Add endpoint-level tests for password signup/login, duplicate emails, wrong passwords, and session cookies
+- [x] Save a successful checkpoint after the password-authentication changes are fully integrated
+- [x] Replace the remaining useAuth OAuth fallback with the native /login password flow
+- [x] Save a successful checkpoint after replacing the final OAuth fallback

@@ -1,4 +1,6 @@
 import { and, desc, eq } from "drizzle-orm";
+import { randomUUID } from "node:crypto";
+import { normalizeEmail } from "./passwordAuth";
 import { drizzle } from "drizzle-orm/mysql2";
 import { Generation, generations, InsertGeneration, InsertUser, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
@@ -75,6 +77,31 @@ export async function upsertUser(user: InsertUser): Promise<void> {
     console.error("[Database] Failed to upsert user:", error);
     throw error;
   }
+}
+
+export async function getUserByEmail(email: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(users).where(eq(users.email, normalizeEmail(email))).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function createPasswordUser(input: { email: string; name: string; passwordHash: string }) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const email = normalizeEmail(input.email);
+  const openId = `password_${randomUUID()}`;
+  const result = await db.insert(users).values({
+    openId,
+    email,
+    name: input.name.trim(),
+    passwordHash: input.passwordHash,
+    loginMethod: "password",
+    lastSignedIn: new Date(),
+  });
+  const insertedId = Number(result[0].insertId);
+  const rows = await db.select().from(users).where(eq(users.id, insertedId)).limit(1);
+  return rows[0];
 }
 
 export async function getUserByOpenId(openId: string) {
