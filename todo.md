@@ -98,3 +98,5 @@
 - [x] Save a successful checkpoint after replacing the final OAuth fallback
 - [x] Verify the Creative Flow AI navigation branding edit
 - [x] Run validation and save a checkpoint for the branding update
+- [x] Verify the updated Dashboard tagline for Creative Flow AI
+- [x] Run validation and save a checkpoint for the Dashboard tagline update
