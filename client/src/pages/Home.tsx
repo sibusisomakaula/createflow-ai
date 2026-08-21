@@ -6,7 +6,7 @@ import { limitHistory } from "@/lib/storage";
 import { downloadImage, downloadTextPdf } from "@/lib/downloads";
 import { Streamdown } from "streamdown";
 import { toast } from "sonner";
-import { ArrowRight, BookOpen, Check, Clipboard, Code2, Download, FileText, History as HistoryIcon, Image as ImageIcon, Eye, EyeOff, Loader2, LogIn, LogOut, Mail, Menu, Monitor, PenLine, Plus, Search, Sparkles, Trash2, UserRound, Wand2, X } from "lucide-react";
+import { ArrowRight, BookOpen, Check, Clipboard, Code2, Download, FileText, History as HistoryIcon, Image as ImageIcon, Eye, EyeOff, LayoutDashboard, Loader2, LogIn, LogOut, Mail, Menu, Monitor, PenLine, Plus, Search, Sparkles, Trash2, UserRound, Wand2, X } from "lucide-react";
 
 type Generator = "email" | "blog" | "social" | "product" | "code" | "image";
 type HistoryEntry = { id: string; type: Generator; title: string; content: string; date: string; };
@@ -51,7 +51,7 @@ function prettyTitle(type: Generator, fields: Record<string, string>) { return f
 function Shell({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
-  const nav = [{ href: "/", label: "Create", icon: Wand2 }, { href: "/prompts", label: "Prompt Library", icon: BookOpen }, { href: "/history", label: "History", icon: HistoryIcon }, { href: "/login", label: "Login", icon: LogIn }];
+  const nav = [{ href: "/dashboard", label: "Dashboard", icon: LayoutDashboard }, { href: "/", label: "Create", icon: Wand2 }, { href: "/prompts", label: "Prompt Library", icon: BookOpen }, { href: "/history", label: "History", icon: HistoryIcon }, { href: "/login", label: "Login", icon: LogIn }];
   return <div className="min-h-screen bg-transparent text-[#123765]"><header className="sticky top-0 z-30 border-b border-[#d5e7ee]/80 bg-white/90 backdrop-blur"><div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8"><Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}><span className="grid size-10 place-items-center overflow-hidden rounded-2xl bg-[#174783] shadow-lg shadow-[#bfe7ee]"><img src="/manus-storage/createflow-logo-final_cc4280c8.png" alt="CreateFlow creativity logo" className="size-full object-cover" /></span><span><span className="block text-base font-bold tracking-tight">CreateFlow AI</span><span className="hidden text-xs text-[#66849a] sm:block">Create anything. Start with one prompt.</span></span></Link><div className="flex items-center gap-2"><nav className="hidden items-center gap-1 md:flex">{nav.map(item => { const Icon = item.icon; const active = location === item.href; return <Link key={item.href} href={item.href} className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition ${active ? "bg-[#e9e2ff] text-[#174783]" : "text-[#66849a] hover:bg-[#f1f8fa] hover:text-[#123765]"}`}><Icon size={16} />{item.label}</Link>; })}</nav><button aria-label="Toggle navigation" className="rounded-xl p-2 text-[#496b83] md:hidden" onClick={() => setOpen(!open)}>{open ? <X size={22} /> : <Menu size={22} />}</button></div></div>{open && <nav className="border-t border-[#e4eff3] bg-white px-5 py-3 md:hidden">{nav.map(item => <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-[#31516c]"><item.icon size={17} />{item.label}</Link>)}</nav>}</header><main>{children}</main></div>;
 }
 

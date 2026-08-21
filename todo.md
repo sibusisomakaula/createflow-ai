@@ -75,3 +75,14 @@
 - [x] Connect Signup to the secure account-creation portal and cross-link Login and Signup
 - [x] Verify responsive Signup rendering, tests, and checkpoint the update
 - [x] Save a new checkpoint capturing the verified Signup page and Login/Signup cross-links
+- [x] Consolidate and refine Login and Signup page navigation and messaging
+- [x] Add a Dashboard route and persistent navigation entry
+- [x] Build dashboard overview cards without fabricating reviews, ratings, or testimonials
+- [x] Add dashboard quick actions into Create, Prompt Library, and History
+- [x] Add recent-work and empty states backed by existing LocalStorage data
+- [x] Verify Login, Signup, Dashboard, and existing pages on desktop and mobile
+- [x] Run tests, update README, and save a new checkpoint
+- [x] Document the Dashboard route, metrics, and navigation in README
+- [x] Save a new checkpoint containing the Dashboard implementation
+- [x] Verify Create, Prompt Library, and History after adding Dashboard navigation on desktop and mobile
+- [x] Save a new checkpoint after the Dashboard, README, and navigation updates

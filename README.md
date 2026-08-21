@@ -13,6 +13,7 @@ CreateFlow AI is organized around three focused areas:
 | **Create** | Generate emails, blog posts, social media copy, product descriptions, code, and images. |
 | **Prompt Library** | Search and filter curated prompts, then use a prompt to prefill the matching generator. |
 | **History** | Review, copy, download, view, and delete recent saved generations stored in the current browser. |
+| **Dashboard** | See LocalStorage-backed creation metrics, quick actions, and recent work in one workspace overview. |
 
 The interface uses a calm cyan workspace with deep navy actions, lavender active states, teal borders, and a creativity-focused image logo. The layout is responsive and stacks the generator form and result panel on smaller screens.
 
@@ -26,6 +27,8 @@ The interface uses a calm cyan workspace with deep navy actions, lavender active
 - Twenty curated prompt cards with search, category filters, and Use Prompt navigation.
 - Prompt prefill flow from the Prompt Library into the Create workspace.
 - LocalStorage history capped at the latest 20 saved generations and ordered newest-first.
+- Dashboard overview with creation counts, format coverage, quick actions, recent-work summaries, and empty states.
+- Login and Signup routes connected to the secure account portal without forcing authentication before app use.
 - Empty states and responsive navigation for desktop and mobile use.
 
 ## Technology
@@ -46,7 +49,7 @@ client/
   src/
     components/       Shared UI and template components
     lib/               Client helpers, including LocalStorage history utilities
-    pages/             Create, Prompt Library, and History experiences
+    pages/             Dashboard, Create, Prompt Library, History, Login, and Signup experiences
     App.tsx            Application routes and providers
     index.css          Global theme and responsive visual system
 server/
