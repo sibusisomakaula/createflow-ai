@@ -1,5 +1,5 @@
 # CreateFlow AI
-
+createflow-gdbcdt94.manus.space
 CreateFlow AI is a lightweight AI-powered content generation workspace for turning a short brief into a useful first draft. The app supports text, code, and image generation through a clean multi-page interface with secure server-side AI requests and browser-local history.
 
 > Choose a format, add a little context, and let CreateFlow shape the first draft.
